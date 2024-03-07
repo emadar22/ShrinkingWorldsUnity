@@ -11,28 +11,7 @@ Missions done in phase 1 :
 - Meterior falling
 - Player collide with meterior and destroy
 ## Scripts from phase 1
-Phase 1
- 
 
-Player Controlled By Following Factors: Rigidbody, Colliders, PlayerController, FauxGravityBody(That Uses The FauxGravityAtractor Methods).
- (PlayerController)  Player Control Mechanism Based On Smoothly Rotating And  The Player Car    According To Input.
-Factors: 
-  1.Speed And Movement =>   Forward Movement With A constant Speed In Fixed   Update.
-2. Rotation (Left And Right) => Getting The Horizontal Input Axis From Keyboard Values We Smoothly Slerp The Car Rotational Values To Left Or Right.
-
- 
-
-
-
-
-
-
-FauxGravityAttractor:
-  It Actually Keeps The Player Car In The  Exact Gravitational Pull By The Sphere /Planet  
-Mechanism: Calculate The Rotation Factors Which Should Bend The Rotation Of Player Car Towards Center of Planet 
-
-
-ShrinkPlanet: Decreases The Size Of Planet  In Update Methods Continuously (Needed to Modify/ Limitize The Shrinkage Factors)
 
 
 
