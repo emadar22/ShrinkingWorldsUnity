@@ -32,3 +32,38 @@ ShrinkPlanet: Decreases The Size Of Planet  In Update Methods Continuously (Need
 
 <img width="460" alt="Screenshot_5" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/ab00240c-6099-4a40-af9d-aaab05538708">
 
+## Phase 1 Hours Distribution 
+PHASE 1
+
+Learned about unity basic
+Interface
+Physics
+Collision
+Camera
+Light
+Animation
+
+15 hrs
+
+Learned about C# Programming in unity
+
+Special Functions 
+start, update, fixed update,on enable, awake
+
+15 hrs
+
+World Shrink 
+Math behind reducing earth radius and diameter
+
+5hrs
+
+how input works in unity and in which function we need to call the commands
+
+5hrs
+
+can controls, car physics and collision setup
+how texture works in unity
+
+10hrs
+
+
