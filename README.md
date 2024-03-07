@@ -32,7 +32,13 @@ ShrinkPlanet: Decreases The Size Of Planet  In Update Methods Continuously (Need
 
 <img width="460" alt="Screenshot_5" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/ab00240c-6099-4a40-af9d-aaab05538708">
 
+## Phase 1 Results 
+
+https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/88f189bb-9937-4ddd-9c5f-b03bdc20b8dc
 ## Phase 1 Hours Distribution 
+
+
+
 PHASE 1
 
 Learned about unity basic
