@@ -12,9 +12,23 @@ Missions done in phase 1 :
 - Player collide with meterior and destroy
 ## Scripts from phase 1
 
+Player Controlled By Following Factors: Rigidbody, Colliders, PlayerController, FauxGravityBody(That Uses The FauxGravityAtractor Methods).
+ (PlayerController)  Player Control Mechanism Based On Smoothly Rotating And  The Player Car    According To Input.
+Factors: 
+  1.Speed And Movement =>   Forward Movement With A constant Speed In Fixed   Update.
+2. Rotation (Left And Right) => Getting The Horizontal Input Axis From Keyboard Values We Smoothly Slerp The Car Rotational Values To Left Or Right.
 
+<img width="339" alt="Screenshot_2" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/d1ee2569-2aae-4f16-a674-f656eb01d924">
 
+<img width="480" alt="Screenshot_3" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/2924582b-36b9-4bfa-86b1-712f1c8f6e0d">
 
+FauxGravityAttractor:
+  It Actually Keeps The Player Car In The  Exact Gravitational Pull By The Sphere /Planet  
+Mechanism: Calculate The Rotation Factors Which Should Bend The Rotation Of Player Car Towards Center of Planet 
 
+<img width="460" alt="Screenshot_4" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/ae2de4ca-19c5-45af-bb47-7da4be5c85ec">
 
+ShrinkPlanet: Decreases The Size Of Planet  In Update Methods Continuously (Needed to Modify/ Limitize The Shrinkage Factors)
+
+<img width="460" alt="Screenshot_5" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/ab00240c-6099-4a40-af9d-aaab05538708">
 
