@@ -156,8 +156,51 @@ can buy a car.
 
 ## Phase 2 results :
 
+Car store :
+
+https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/5455e93c-f0a0-4503-a179-057bdab89f96
 
 
+GamePlay :
+
+https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/aed179be-37fb-4a1a-8c06-88609924ae96
+
+
+ ## Phase 2 hours distribution :
+ 
+
+1) Studing and Understand how UI works in unity
+Image, text, anchor points, scale, types on canvas 
+
+Setting up main menu, hud and results screen
+
+5 hrs
+
+
+2) How to save data in unity permenently 
+json file and prefebs 
+
+used this knowledge to save highscore and in Game Currency in the project
+5 hrs
+
+
+pattern to program shop 
+made shop where i can unlock cars using in game currency and can buy and select them
+
+15 hrs
+
+AI setup in unity
+Navmesh baking and Navmesh Agent to find the shortest parth
+math and physics involved behind NPC players
+
+15 hrs
+
+VFX and Audio Manager In Unity
+5 hrs
+
+How Scenes work in unity 
+used to make seperate menu screen from gameplay scene
+5 hrs
 
 
 
