@@ -12,23 +12,25 @@ Missions done in phase 1 :
 - Player collide with meterior and destroy
 ## Scripts from phase 1
 
-Player Controlled By Following Factors: Rigidbody, Colliders, PlayerController, FauxGravityBody(That Uses The FauxGravityAtractor Methods).
- (PlayerController)  Player Control Mechanism Based On Smoothly Rotating And  The Player Car    According To Input.
-Factors: 
-  1.Speed And Movement =>   Forward Movement With A constant Speed In Fixed   Update.
-2. Rotation (Left And Right) => Getting The Horizontal Input Axis From Keyboard Values We Smoothly Slerp The Car Rotational Values To Left Or Right.
+
+Player controlled by following factors: Rigidbody, colliders, PlayerController, FauxGravityBody (that uses the FauxGravityAttractor methods).
+(PlayerController) Player control mechanism based on smoothly rotating and the player car according to input.
+Factors:
+
+Speed and movement => forward movement with a constant speed in fixed update.
+Rotation (left and right) => getting the horizontal input axis from keyboard values we smoothly slerp the car rotational values to left or right.
 
 <img width="339" alt="Screenshot_2" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/d1ee2569-2aae-4f16-a674-f656eb01d924">
 
 <img width="480" alt="Screenshot_3" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/2924582b-36b9-4bfa-86b1-712f1c8f6e0d">
 
 FauxGravityAttractor:
-  It Actually Keeps The Player Car In The  Exact Gravitational Pull By The Sphere /Planet  
-Mechanism: Calculate The Rotation Factors Which Should Bend The Rotation Of Player Car Towards Center of Planet 
+It actually keeps the player car in the exact gravitational pull by the sphere/planet.
+Mechanism: Calculate the rotation factors which should bend the rotation of player car towards center of planet.
 
 <img width="460" alt="Screenshot_4" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/ae2de4ca-19c5-45af-bb47-7da4be5c85ec">
 
-ShrinkPlanet: Decreases The Size Of Planet  In Update Methods Continuously (Needed to Modify/ Limitize The Shrinkage Factors)
+ShrinkPlanet: Decreases the size of planet in update methods continuously (needed to modify/limitize the shrinkage factors).
 
 <img width="460" alt="Screenshot_5" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/ab00240c-6099-4a40-af9d-aaab05538708">
 
@@ -79,5 +81,61 @@ can controls, car physics and collision setup
 how texture works in unity
 
 10hrs
+
+## Phase 2 :
+Missions done in phase 2 :
+-Result screen 
+- coin collection
+- Car selection system
+- AI cars
+- Main menu setup
+
+## Scripts from phase 2:
+AI cars:
+Cars with AI controller move to random path on the planet. Components include Rigidbody for collision detection, AI controller for car axis and movement controls, Faux Gravity Body for gravitational effect. Level fails on collision with player.
+<img width="208" alt="Screenshot_6" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/1a32965a-62dc-4296-9f4e-e7b77bd3ad58">
+
+AI car control mechanism includes moving position and rotating by slerping the angular factors towards planet.
+
+
+<img width="392" alt="Screenshot_7" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/92c1912b-1c75-4a89-bc2d-b15395cd9ddc">
+
+The script on player for collision detection detects when it collides with AI.
+
+<img width="397" alt="Screenshot_8" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/34ed2e54-d56c-4ffe-b1c5-4a084ec512e3">
+
+Coins and Economy Management:
+Coins on the planet, when triggered with player car, add coins value in the top coin bar that are stored for purchasing different player model vehicles. Detection:
+
+<img width="378" alt="Screenshot_9" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/cf003211-f594-4694-a323-5f0a918fef81">
+
+Sound Manager:
+With generic functions, we just pass the name/string of audio clip that we want to play. We handle overall sounds and SFX flow.
+
+<img width="390" alt="Screenshot_10" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/2a1962e1-aa51-4c53-94ba-25c8a948ac97">
+
+
+Player Selection and UI Overall Gameplay:
+Player selection includes player purchasing, selection, and spawning in the gameplay scene.
+UI references with player prefabs and player prices are player controlling factors.
+
+<img width="396" alt="Screenshot_11" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/e3128f29-3c63-44b9-a1ba-2ecb0068ceb3">
+
+
+Left, right, spawning, buying, and selection of the player are handled by script by checking all factors. For example, if there is enough money, then we
+can buy a car.
+
+<img width="281" alt="Screenshot_12" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/a9535278-1df8-4ee2-b53f-8654df78348e">
+
+.
+
+## Phase 2 results :
+
+
+
+
+
+
+
 
 
