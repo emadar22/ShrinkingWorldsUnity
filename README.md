@@ -34,6 +34,31 @@ ShrinkPlanet: Decreases the size of planet in update methods continuously (neede
 
 <img width="460" alt="Screenshot_5" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/ab00240c-6099-4a40-af9d-aaab05538708">
 
+In Phase 1, we handle spawning meteors, collisions, and particle handling for the post effects.
+
+MeteorSpawner: Spawns the meteors on runtime as prefabs on the random unit sphere values.
+
+<img width="460" alt="Screenshot_13" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/1fc78a69-dc6c-4ac3-a194-43b5eacb26e6">
+
+Meteor: Script on the meteor that handles the collision of the meteor on the contact points of the planet.
+
+<img width="461" alt="Screenshot_14" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/01decd3e-ef26-4a67-a0c5-9efcf9ca0eae">
+
+The meteor also contains the FauxGravityBody script as player that helps to keep molding the direction and rotation and movement towards the planet.
+
+Crater: That handles the post collision effects of meteor colliding to the surface of the Earth and destroys the object.
+
+<img width="459" alt="Screenshot_15" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/dce97674-c90e-4550-8637-9b5b147ecd34">
+
+PlayerCollision: Handles the collision of the player car to meteor and the death phase.
+
+<img width="337" alt="Screenshot_16" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/42fcd760-ac82-49f2-ac68-81b05661d2a8">
+
+Thats a rough docomentaion Of game flow.
+
+
+
+
 ## Phase 1 Results 
 
 https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/88f189bb-9937-4ddd-9c5f-b03bdc20b8dc
