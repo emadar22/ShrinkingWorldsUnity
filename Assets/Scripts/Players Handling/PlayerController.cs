@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.layer==6)
+        if (col.gameObject.layer==6) // Coins Layer
         {
             UiManager.GetInstance().SpawnCoin();
             SoundManager.GetInstance().PlaySfxSound("coin");

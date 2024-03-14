@@ -15,12 +15,14 @@ public class PlayFabLogin : MonoBehaviour
             PlayFabSettings.TitleId = "E0C0B"; // Please change this value to your own titleId from PlayFab Game Manager
         }
 
+        /*var req = new LoginWithEmailAddressRequest { Email = userEmail, Password = userPassword };
+        PlayFabClientAPI.LoginWithEmailAddress(req,OnLoginSuccess,OnLoginFailure);*/
         if (PlayerPrefs.HasKey("EMAIL"))
         {
             userEmail = PlayerPrefs.GetString("EMAIL"); 
             userPassword = PlayerPrefs.GetString("PASSWORD"); 
-            var request = new LoginWithCustomIDRequest { CustomId = "GettingStartedGuide", CreateAccount = true};
-                    PlayFabClientAPI.LoginWithCustomID(request, OnLoginSuccess, OnLoginFailure);
+            var request = new LoginWithEmailAddressRequest  { Email = userEmail, Password = userPassword };
+                    PlayFabClientAPI.LoginWithEmailAddress(request, OnLoginSuccess, OnLoginFailure);
         }
      
        
@@ -29,6 +31,9 @@ public class PlayFabLogin : MonoBehaviour
     private void OnLoginSuccess(LoginResult result)
     {
         Debug.Log("Congratulations, you made your first successful API call!");userLoginPanel.SetActive(false);
+        PlayerPrefs.SetString("EMAIL", userEmail);
+        PlayerPrefs.SetString("PASSWORD", userPassword);
+        userLoginPanel.SetActive(false);
     }
     private void OnRegisterSuccess(RegisterPlayFabUserResult result)
     {
@@ -69,7 +74,8 @@ public class PlayFabLogin : MonoBehaviour
                 default: break;
             }
         }
-    }
+    } 
+    
     private void OnLoginFailure(PlayFabError error)
     {
         var registerUsr = new RegisterPlayFabUserRequest { Email = userEmail, Password = userPassword,Username =userName};

@@ -14,6 +14,7 @@ public class PlayerSelection : MonoBehaviour
     public int[] playerPrices;
     public GameObject[] players;
     public int currentSelectedPlayerIndex = 0;
+    public GameObject worldSelectionPanel;
 
     private void Start()
     {
@@ -61,9 +62,11 @@ public class PlayerSelection : MonoBehaviour
     public void OnSelectButtonClick()
     {
         PlayerPrefsManager.Instance.CurrentSelectedPlayer = currentSelectedPlayerIndex;
-        SceneManager.LoadScene(1);
+        worldSelectionPanel.SetActive(true);
+        
     }
 
+   
     public void OnLeftButtonClick()
     {
         currentSelectedPlayerIndex--;

@@ -43,6 +43,10 @@ public class PlayerPrefsManager
     {
         get { return PlayerPrefs.GetInt("cash");} set{PlayerPrefs.SetInt("cash",value);}
     }
+public int SelectPlanetNum
+    {
+        get { return PlayerPrefs.GetInt("planetNum");} set{PlayerPrefs.SetInt("planetNum",value);}
+    }
 
     public int CurrentSelectedPlayer
     {

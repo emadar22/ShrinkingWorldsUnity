@@ -24,6 +24,7 @@ public class GameManager : Singleton<GameManager>
 
         public bool SetGameTestingVariables,gameStarted;
         [Header("Lists")] public List<GameObject> cois = new List<GameObject>();
+        public List<GameObject> planets = new List<GameObject>();
         public List<AudioSource> allSources = new List<AudioSource>();
         public EventCaller eventOnStart;
 
@@ -40,8 +41,9 @@ public class GameManager : Singleton<GameManager>
     // private variables
     private Scene PSceneName;
 
-    private void Awake() 
+    private void Awake()
     {
+        ActivatePlanets();
         instance = this;
         PSceneName = SceneManager.GetActiveScene();
     }
@@ -65,6 +67,11 @@ public class GameManager : Singleton<GameManager>
        
     }
 
+    void ActivatePlanets()
+    {
+        planets.ForEach(obj=>obj.SetActive(false));
+        planets[PlayerPrefsManager.Instance.SelectPlanetNum].SetActive(true);
+    }
 
     void Update()
     {

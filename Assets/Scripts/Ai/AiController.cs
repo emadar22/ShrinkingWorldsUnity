@@ -15,13 +15,11 @@ public class AiController : MonoBehaviour
     [Range(-1,1)]
     public float rotation;
     public float lerpSpeed;
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         rb.MovePosition(rb.position + this.transform.forward * -moveSpeed * Time.fixedDeltaTime);
@@ -31,10 +29,6 @@ public class AiController : MonoBehaviour
         rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, 50f * Time.fixedDeltaTime));    
     }
 
-    void Update()
-    {
-      //  ManageSpeed();
-    }
     void ManageSpeed()
     {
         rotation = Mathf.Lerp(rotation, LerpRotationValues(rotation), Time.deltaTime * lerpSpeed);

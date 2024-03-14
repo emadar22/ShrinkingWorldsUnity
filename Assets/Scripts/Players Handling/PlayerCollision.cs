@@ -38,7 +38,7 @@ public class PlayerCollision : MonoBehaviour
             this.gameObject.SetActive(false);
         }
 
-        if (other.gameObject.layer==7)
+        if (other.gameObject.layer==7)  // Ai Car Detection
         {
             ScreenAnimator.SetTrigger("PlayerDead");
             SoundManager.GetInstance().PlaySfxSound("hit");

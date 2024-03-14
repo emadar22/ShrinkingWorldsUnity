@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MenuUiManager : Singleton<MenuUiManager>
@@ -20,7 +21,15 @@ public class MenuUiManager : Singleton<MenuUiManager>
   Time.timeScale = 1;
  }
 
-
+ public void SelectWorld(int num)
+ {
+  UpdatePlanetNum(num);
+  SceneManager.LoadScene(1);
+ }
+ void UpdatePlanetNum(int num)
+ {
+  PlayerPrefsManager.Instance.SelectPlanetNum = num;
+ }
  #endregion
 
  #region Custom Methods
