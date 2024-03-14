@@ -212,9 +212,11 @@ used to make seperate menu screen from gameplay scene
 5) updating controls of car and AI so they can set there movment on each shape either its cube or pentagon
 ## phase 3 part-1 results
 Earth shrinking
+
 https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/a55373d1-59a7-4e61-abb7-35a281860ece
  
 Dodecagon
+
 https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/347ed7c1-7852-4a76-adf8-c1ab3e070199
 
 Cube
