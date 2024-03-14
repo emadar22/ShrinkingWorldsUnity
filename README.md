@@ -202,8 +202,24 @@ How Scenes work in unity
 used to make seperate menu screen from gameplay scene
 5 hrs
 
+# phase 3 part-1 
 
+## phase 3 part-1 missions
+1) shrinking of planet visual
+2) camera setting 
+3) shape seleection screen
+4) based on shape selection set planet shape accordingly
+5) updating controls of car and AI so they can set there movment on each shape either its cube or pentagon
+## phase 3 part-1 results
+Earth shrinking
+https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/a55373d1-59a7-4e61-abb7-35a281860ece
+ 
+Dodecagon
+https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/347ed7c1-7852-4a76-adf8-c1ab3e070199
 
+Cube
+
+https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/06e8cd07-ca3b-48fe-b9dc-876b8c788812
 
 
 
