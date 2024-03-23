@@ -332,6 +332,17 @@ Still need time to use other approaches like:
 
 
 
+https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/30378c91-57b6-475d-878f-9130cdc32fea
+
+
+
+https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/623d8dae-b382-4b68-b34f-425533bf60f0
+
+
+
+
+
+
 
 
 
