@@ -324,9 +324,9 @@ Note: Each Process For Camera Transition Took Around 4 Hours
 Pending Tasks:
 Still need time to use other approaches like:
 
-Moving player and camera on the waypoints.
-Creating an animation for the best camera and player movement that includes jumping over the next planet.
-Need some time to tackle this issue: Camera following the aeroplane.
+1)Moving player and camera on the waypoints.
+2)reating an animation for the best camera and player movement that includes jumping over the next planet.
+3)Need some time to tackle this issue: Camera following the aeroplane.
 
 ## Phase 3 part2 results :
 
