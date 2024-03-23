@@ -224,4 +224,114 @@ Cube
 https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/06e8cd07-ca3b-48fe-b9dc-876b8c788812
 
 
+# Phase 3 Part-2
+
+## Phase 3 missions:
+
+Adding Multiple Dice Shapes For Player Running On Planet;
+1. 12 Sided Dice
+2. Cubical Dice
+3. 10 Sided Dice
+4. 8 Sided Dice
+     All Above Dice Shapes Has Been Adjusted With Repeated Prefabs And Different Coins Patterns. It Took Around 4 - 5 Hours To Make Their Ready Usable Prefabs.
+
+<img width="289" alt="Screenshot_17" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/3f272d87-4069-4fe5-b884-4a5a53c1001c">
+
+Planets Activation Process:
+When game starts, the planet selected from the main menu is activated initially. Then, when the bar is filled and the "Planet Jump" button is pressed, the following process occurs:
+There is a list of game objects on the GameManager, and we activate the required planet with a specific number that comes from the PlayerPrefs Manager.
+"SelectPlanetNum" adds one number for every bar filling process. So, with the progress of the game, the "SelectPlanetNum" increases, and the next shapes become active one after another.
+
+<img width="375" alt="Screenshot_18" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/7de867e4-49e0-4ade-ab91-43d471b862a2">
+
+<img width="415" alt="Screenshot_19" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/10757af7-1d4e-4714-9880-c3cb0d63928f">
+
+Bar filling mechanism:
+The bar fills up (very smoothly) every time when the player enters the coin collider. After the calculated amount of coins collected (5 coins for one-time bar filling), we proceed to the next planet shifting and transformation process. The script on the camera can only follow perfectly one central planet; otherwise, changing the position for the planet causes problems in camera following.
+
+Detection in the PlayerController and calling the "UpdateBarFilling" method.
+
+
+<img width="412" alt="Screenshot_20" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/28043ab3-1dde-40a8-81db-2a6339cf68ab">
+
+How is the bar filled?
+Using a coroutine, we smoothly lerp (using Mathf.Lerp) the fill image (bar) values. When it reaches the maximum value, we spawn a new planet. It took around two hours to implement the bar filling mechanism.
+
+Calculations:
+Maximum Value = 10;
+Every time the function is called, += 0.2
+So, in 5 times coin collection => 0.2 * 5 = 1;
+
+
+<img width="408" alt="Screenshot_21" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/ad830c27-b33b-4767-bdb5-0b268c46e9fc">
+
+
+Planet Shifting and Transformation Process:
+
+Planet Spawn:
+When the bar fills up to maximum capacity, a planet is instantiated next to the player with a margin of 15 distance in the x-direction.
+
+
+<img width="399" alt="Screenshot_22" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/a0278236-6f3d-4379-919d-f8068ca36c30">
+
+Planet Transformation Process:
+Using a coroutine, we perform the following operations:
+
+1-Temporarily deactivating the player components to avoid controller interference.
+2-Applying smoke particles effect on pre and post-transformation phases.
+3-Activating the aeroplane and deactivating the player's body.
+4-Implementing smooth projectile movement from one planet to another planet.
+
+<img width="409" alt="Screenshot_23" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/7e9ad29d-c4ca-424b-86d4-d433c86c6f37">
+
+
+Aeroplane Movement:
+Central Point Calculation.
+The aeroplane will fly in a projectile motion style for better visual effects. Initially, we calculate the central point between two planets, and we determine a Vector3 point right above the central point.
+
+Movement in calculated distance and time frames: 
+
+<img width="407" alt="Screenshot_24" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/8ae8bc32-5056-44ac-8923-2058780565b6">
+
+Movement:    Initial Position=> Central Point => Target Point
+It took along 4-5 Hours for handling the transformation process.
+
+
+Camera Following Aeroplane Controllers:
+Two to three approaches have been tried for camera following the plane:
+
+1) Using the camera controller that follows the player. The camera follows the target in both positional and rotational factors.
+
+
+
+<img width="395" alt="Screenshot_25" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/3efe22b4-8007-4a4c-bc71-d1345b4b7d81">
+
+Problems Faced: The camera follow script works efficiently when the target is in a central position (new Vector3), but when there is a margin in position transformation, it can't focus on the player, which looks unpleasant.
+
+2) To overcome the camera following problems, I tried another script that somewhat works like the previous controller.
+   
+  <img width="406" alt="Screenshot_26" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/c14ba18f-70e9-409c-9640-698d6c78e027">
+
+
+Problems Faced: This camera controller does not properly follow at different rotations and passes through colliders, which also looks unpleasant.
+
+3)Making the camera a child of the aeroplane:
+This plan also fails because the game manager's system only allows no camera in the child of the player object.
+
+
+Note: Each Process For Camera Transition Took Around 4 Hours 
+
+Pending Tasks:
+Still need time to use other approaches like:
+
+Moving player and camera on the waypoints.
+Creating an animation for the best camera and player movement that includes jumping over the next planet.
+Need some time to tackle this issue: Camera following the aeroplane.
+
+## Phase 3 part2 results :
+
+
+
+
+
 
