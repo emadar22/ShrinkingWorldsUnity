@@ -210,6 +210,42 @@ used to make seperate menu screen from gameplay scene
 3) shape seleection screen
 4) based on shape selection set planet shape accordingly
 5) updating controls of car and AI so they can set there movment on each shape either its cube or pentagon
+
+## Phase 3 part-1 
+
+Phase 3-1: Adding Multiple Planets Modes
+
+1)Cubical Planet
+2)Dodecagon
+Working Mechanism: Both planets follow the same mechanism as the globe.
+Planets require the major two components for their shrinking and gravitational pull effect.
+
+<img width="410" alt="Screenshot_27" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/962d070e-7557-4b1f-b11d-a37002994c47">
+
+
+In the shrink planet, FixedUpdate is responsible for shrinking (we just need to scale down the planet for the shrinking effect).
+
+
+<img width="403" alt="Screenshot_28" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/5ccce06e-e6c9-4897-98bd-f1b872800c07">
+
+
+Gravity Attracter is responsible for the attraction force and moving rotation towards the planet
+
+
+<img width="405" alt="Screenshot_29" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/5893e700-bc1e-4a9b-b454-3038f83932cf">
+
+
+
+Improving the  size calculation Of Planets 
+
+
+<img width="413" alt="Screenshot_30" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/8b790130-9223-4bfa-8d51-f192e3c6a611">
+
+Runtime update Of planet size handled by shrink planet in The fixed update
+
+<img width="408" alt="Screenshot_31" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/243a5356-91d8-4004-9069-8d1f3010c4ce">
+
+
 ## phase 3 part-1 results
 Earth shrinking
 
@@ -325,16 +361,19 @@ Note: Each Process For Camera Transition Took Around 4 Hours
 Still need time to use other approaches like:
 
 1)Moving player and camera on the waypoints.
+
 2)reating an animation for the best camera and player movement that includes jumping over the next planet.
+
 3)Need some time to tackle this issue: Camera following the aeroplane.
 
 ## Phase 3 part2 results :
 
 
+Run 1:
 
 https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/30378c91-57b6-475d-878f-9130cdc32fea
 
-
+Run 2:
 
 https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/623d8dae-b382-4b68-b34f-425533bf60f0
 
