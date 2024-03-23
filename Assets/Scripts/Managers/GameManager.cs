@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
@@ -27,7 +28,13 @@ public class GameManager : Singleton<GameManager>
         public List<GameObject> planets = new List<GameObject>();
         public List<AudioSource> allSources = new List<AudioSource>();
         public EventCaller eventOnStart;
-
+       
+        [Header("Player Transformation Data")]
+        public List<GameObject> planetPrefabs=new List<GameObject>();
+        public GameObject currentPlanet;
+        public ParticleSystem smokePartilces;
+        public GameObject aeroPlane;
+        public GameObject cam;
         #endregion
     
     
@@ -48,6 +55,7 @@ public class GameManager : Singleton<GameManager>
         PSceneName = SceneManager.GetActiveScene();
     }
 
+    private GameObject currentPlayerCar;
     private void Start()
     {
        // Time.timeScale = 0;
@@ -56,7 +64,8 @@ public class GameManager : Singleton<GameManager>
         if (playersCars.Count > 0)
         {
             playersCars.ForEach(obj => obj.SetActive(false));
-            playersCars[PlayerPrefsManager.Instance.CurrentSelectedPlayer].SetActive(true);
+            GameObject obj = playersCars[PlayerPrefsManager.Instance.CurrentSelectedPlayer].gameObject;
+            currentPlayerCar = obj; obj.SetActive(true);
         }
 
         if (eventOnStart._event!=null)
@@ -82,7 +91,10 @@ public class GameManager : Singleton<GameManager>
                 obj.transform.LookAt(player.transform);
             }
         }
+        
     }
+
+    public bool startLerp;
     #region Initialization
 
     void InitializeTestingFactors()
@@ -103,21 +115,145 @@ public class GameManager : Singleton<GameManager>
     #region Coins Managment Scetion
 
     private int tempListNum;
-    private List<GameObject> coinsList = new List<GameObject>();
+    public List<GameObject> coinsList = new List<GameObject>();
     public void ActivateCoins()
     {
         cois.ForEach(obj=>obj.SetActive(false));
-        tempListNum = Random.Range(0, cois.Count - 1);
-       print(tempListNum+"  "+ cois[tempListNum].transform.childCount);
-        for (int i = 0; i < cois[tempListNum].transform.childCount-1; i++)
+        tempListNum = PlayerPrefsManager.Instance.SelectPlanetNum;
+        print(tempListNum+"  Plante Num");
+       print(tempListNum+"  "+ cois[tempListNum].transform.GetChild(0).childCount);
+        for (int i = 0; i < cois[tempListNum].transform.GetChild(0).childCount-1; i++)
         {
-           if( cois[tempListNum].transform.GetChild(i).gameObject) coinsList.Add( cois[tempListNum].transform.GetChild(i).gameObject);
+           if( cois[tempListNum].transform.GetChild(0).GetChild(i).gameObject) coinsList.Add( cois[tempListNum].transform.GetChild(0).GetChild(i).gameObject);
         }
      if(cois.Count>0)   cois[tempListNum].SetActive(true);
      else Debug.LogError("Please Assign Coins");
     }
-    
 
+    private FauxGravityAttractor f;
+    public FauxGravityAttractor GravityAttracxtor()
+    {
+        f = FauxGravityAttractor.instance;
+        if (!f) f = FindObjectOfType<FauxGravityAttractor>();
+        return f;
+    }
+
+    public GameObject spawnedPlanet;
+    private bool spawned;
+    public void SpawnNewPlanet()
+    {
+        if (currentPlanet)
+        {
+            if(spawned) return; 
+            var id = currentPlanet.GetComponent<ShrinkPlanet>().planetID;
+                GameObject obj = Instantiate(planetPrefabs[getCurrentSpawnablePlanet()],
+                    new Vector3(currentPlanet.transform.position.x - 15, currentPlanet.transform.position.y,
+                        currentPlanet.transform.position.z), currentPlanet.transform.rotation);
+                spawnedPlanet = obj;
+                obj.SetActive(true);
+                spawned = true;
+
+        }
+    }
+
+
+    public void TransformPlanetBodyTo()
+    {
+      //  EnableDisablePlayerComponents(false);
+       // player.GetComponent<Animator>().SetBool(("genericAnim"),true);
+        //startPlaneLering();
+        StartCoroutine(InitialTransfromation(true));
+    }
+
+    void startPlaneLering()
+    {
+        if (gameObject.TryGetComponent(out testProjectile t))
+        {
+            t.MoveToTarget(spawnedPlanet.transform);
+            currentPlayerCar.SetActive(false);
+            aeroPlane.SetActive(true);
+            smokePartilces.Play();
+            EnableDisablePlayerComponents(false);
+        }
+    }
+
+    int getCurrentSpawnablePlanet()
+    {
+        if (PlayerPrefsManager.Instance.SelectPlanetNum < planets.Count)
+        {
+            PlayerPrefsManager.Instance.SelectPlanetNum += 1;
+        }
+        else
+        {
+            PlayerPrefsManager.Instance.SelectPlanetNum += 0;
+        }
+
+        return PlayerPrefsManager.Instance.SelectPlanetNum;
+    }
+
+    public bool startLookingAt;
+    IEnumerator InitialTransfromation(bool isInitial)
+    {
+        if (isInitial)
+        {
+            EnableDisablePlayerComponents(false);
+            player.transform.GetChild(3).gameObject.SetActive(true); print(player.transform.GetChild(3).gameObject+"  Cam");
+           
+           smokePartilces.Play();
+            currentPlayerCar.SetActive(false);
+            yield return new WaitForSeconds(0.2f);
+            aeroPlane.SetActive(true);
+            yield return new WaitForSeconds(1.2f);
+            if (gameObject.TryGetComponent(out testProjectile t))
+            {
+                t.MoveToTarget(spawnedPlanet.transform);
+                EnableDisablePlayerComponents(false);
+            }
+            cam.GetComponent<CameraFollow>().enabled = false;
+            cam.GetComponent<CamFolloTwo>().enabled = true;
+            yield return new WaitForSeconds(6);
+            smokePartilces.Play();
+           // EnableDisablePlayerComponents(true);
+            currentPlayerCar.SetActive(true);
+            aeroPlane.SetActive(false);
+           SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //spawnedPlanet.AddComponent<FauxGravityAttractor>().gravity = -4;  // -2 standard
+            //  spawnedPlanet.GetComponent<FauxGravityAttractor>().enabled = true;
+
+            /*ResetPlanetPosition();
+            Destroy((currentPlanet)); currentPlanet = spawnedPlanet;
+                                spawnedPlanet.SetActive(true);
+                                shrinkPlanet = spawnedPlanet.GetComponent<ShrinkPlanet>();
+                                EnableDisablePlayerComponents(true);
+                                yield return new WaitForSeconds(1);aeroPlane.SetActive(false);currentPlayerCar.SetActive(true);smokePartilces.Play();
+                                UiManager.GetInstance().progressBar.fillAmount = 0;player.GetComponent<BoxCollider>().enabled = true; UiManager.GetInstance().progressJumpToNextBtn.SetActive(false);*/
+            // spawnedPlanet = null;
+        }
+        else
+        {
+            aeroPlane.SetActive(false);
+            EnableDisablePlayerComponents(true);
+            yield return new WaitForSeconds(0.9f);
+            aeroPlane.SetActive(true);
+        }
+    }
+
+    void ResetPlanetPosition()
+    {
+        var pos = player.transform.position;
+        player.transform.position = new Vector3(pos.x, pos.y-10, pos.z);
+    }
+    void enablePlanetComponents()
+    {
+        spawnedPlanet.GetComponent<ShrinkPlanet>().enabled = true;
+    }
+   public void EnableDisablePlayerComponents(bool b)
+    {
+        player.GetComponent<FauxGravityBody>().enabled = b;
+        player.GetComponent<PlayerCollision>().enabled = b;
+        player.GetComponent<PlayerController>().enabled = b;
+        player.GetComponent<Collider>().enabled = b;
+    }
     #endregion
 }
 [Serializable]

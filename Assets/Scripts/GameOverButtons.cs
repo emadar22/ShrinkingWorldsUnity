@@ -33,8 +33,9 @@ public class GameOverButtons : MonoBehaviour
                 Time.timeScale = 1;
                 break;
             case ButtonType.Menu:
-               SoundManager.GetInstance().PlaySfxSound("buttonclick1");
-                SceneManager.LoadScene(0);
+              
+                SceneManager.LoadScene(0); SoundManager.GetInstance().PlaySfxSound("buttonclick1");
+                
                 break;
             case ButtonType.Restart:
                SoundManager.GetInstance().PlaySfxSound("buttonclick1");

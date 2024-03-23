@@ -10,6 +10,10 @@ public class FauxGravityAttractor : MonoBehaviour
     // private varaibles
     private SphereCollider col;
 
+    private void Start()
+    {
+        
+    }
     private void Awake() {
         instance = this;
         col = instance.GetComponent<SphereCollider>();

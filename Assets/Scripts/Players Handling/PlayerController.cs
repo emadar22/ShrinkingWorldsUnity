@@ -55,12 +55,13 @@ public class PlayerController : MonoBehaviour
         rb.MoveRotation(Quaternion.Slerp(rb.rotation, targetRotation, 50f * Time.fixedDeltaTime));    
     }
 
-    void OnTriggerEnter(Collider col)
+    void OnTriggerEnter(Collider col) //coin Detection
     {
         if (col.gameObject.layer==6) // Coins Layer
         {
             UiManager.GetInstance().SpawnCoin();
             SoundManager.GetInstance().PlaySfxSound("coin");
+            UiManager.GetInstance().UpdateBarFilling();
             Destroy(col.gameObject);
         }
     }

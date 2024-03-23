@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,8 +11,12 @@ public class UiManager :Singleton<UiManager>
   [Header("Panels And Texts")] public Text highScoreText;
   public Text coinsText;
   public GameObject gameFailPanel,gamePlayPanel;
+ [Header("Progress Bar Area")]
+  public Image progressBar;
+  public GameObject progressJumpToNextBtn;
   [Header("Public References")] public GameObject coinPrefab;
   public Transform coinTargetInitial,coinTargetFinal;
+  public Text sizeText;
 
   #endregion
 
@@ -76,6 +81,39 @@ public class UiManager :Singleton<UiManager>
     Time.timeScale = 1;
   }
   
+
+  #endregion
+  
+  
+  #region Bar Filling Mechanism
+
+  public void UpdateBarFilling()
+  {
+   if(progressBar.fillAmount<1 && progressBar) StartCoroutine(fillBar());
+  }
+
+  IEnumerator fillBar()
+  {
+  
+    float minFillAmount = progressBar.fillAmount;
+    float maxFillAmount = progressBar.fillAmount + 0.2f;
+    float elapsedTime=0;
+    float timeToProgress = 2f;
+    while (elapsedTime<timeToProgress)
+    {
+      elapsedTime += Time.deltaTime;
+      progressBar.fillAmount = Mathf.Lerp(progressBar.fillAmount, maxFillAmount, elapsedTime / timeToProgress);
+      yield return null;
+    }
+    progressBar.fillAmount = maxFillAmount; print("Progress Bar Filling "+maxFillAmount);
+   progressJumpToNextBtn.SetActive(progressBar.fillAmount>0.99f);
+   if (progressBar.fillAmount == 1)
+   {
+     GameManager.instance.SpawnNewPlanet();
+     
+   }
+    
+  }
 
   #endregion
 

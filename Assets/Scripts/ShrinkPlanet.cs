@@ -7,9 +7,10 @@ public class ShrinkPlanet : MonoBehaviour
 {
     [Tooltip(" Initial Size Will Be 100 m")]
     public float highScore;
-    public Text sizeText;
+     Text sizeText;
+    public int planetID;
 
-     bool startScoreAddition;
+    public bool startScoreAddition;
     // public variables
 
     [Range(.0f, .05f)]
@@ -17,7 +18,10 @@ public class ShrinkPlanet : MonoBehaviour
 
     private void Start()
     {
+       transform.GetChild(0).gameObject.SetActive(true);
+        sizeText = UiManager.GetInstance().sizeText;
         Invoke(nameof(startScoreProgress),2);
+        GameManager.instance.currentPlanet = gameObject;
     }
 
     void startScoreProgress()
