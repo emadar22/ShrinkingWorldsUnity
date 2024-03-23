@@ -321,7 +321,7 @@ This plan also fails because the game manager's system only allows no camera in 
 
 Note: Each Process For Camera Transition Took Around 4 Hours 
 
-Pending Tasks:
+## Phase 3 Pending Tasks:
 Still need time to use other approaches like:
 
 1)Moving player and camera on the waypoints.
