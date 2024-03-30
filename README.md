@@ -377,8 +377,31 @@ Run 2:
 
 https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/623d8dae-b382-4b68-b34f-425533bf60f0
 
+# Phase 4 Planning and progress 
+
+## Previous tasks 
+In the previus scenario we are generating gravitational pull towards the center point of the 3D models even if the models shapes vary and are irregular this approach works. Then using raycast we set a model of the car to the box that is in contact with the surface under influence of the gravitational pull.
+
+figure :
+
+<img width="528" alt="Screenshot_32" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/f9d0efc5-932f-4c71-92fa-4a30828af87a">
+
+## Current task 
+
+In the torus shape 3D model we can not set the center point of the shape and center of gravity cause our car will need to move on the surface of the donut hence to achieve this I will use the following points :
+- Dividing torus model into 7 pieces like shown in diagram
+- Each model will have its own center point which are small green circles
+- Box shape model as shown in diagram will act as gameobject that will act as center of gravity for the car
+- This box will smoothly lerp towards the center point of the torus model piece on which car is present 
+- As car shift from one piece to another the box will smoothly lerp towards the center point of next shape this will keep the car linked to the surface while its  
+  translates across the torus
+- Lerp will help in smoothly transfer of gravity point from one object to another without giving jerky effect
+- I am using trigger in between pieces to note which next donut piece our car is entering
 
 
+
+
+<img width="563" alt="Screenshot_33" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/7a0b0bfc-20ef-414e-bc6e-cc1991754eca">
 
 
 
