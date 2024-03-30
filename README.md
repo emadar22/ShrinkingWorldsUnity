@@ -393,8 +393,8 @@ In the torus shape 3D model we can not set the center point of the shape and cen
 - Each model will have its own center point which are small green circles
 - Box shape model as shown in diagram will act as gameobject that will act as center of gravity for the car
 - This box will smoothly lerp towards the center point of the torus model piece on which car is present 
-- As car shift from one piece to another the box will smoothly lerp towards the center point of next shape this will keep the car linked to the surface while its  
-  translates across the torus
+- As car shift from one piece to another the box will smoothly lerp towards the center point of next shape this will keep the car linked to the surface while it 
+  translates across the torus.
 - Lerp will help in smoothly transfer of gravity point from one object to another without giving jerky effect
 - I am using trigger in between pieces to note which next donut piece our car is entering
 
