@@ -404,7 +404,61 @@ In the torus shape 3D model we can not set the center point of the shape and cen
 <img width="563" alt="Screenshot_33" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/7a0b0bfc-20ef-414e-bc6e-cc1991754eca">
 
 
+## Working mechanism 
+ 
+The torus is divided into six shapes. Each part is connected to the next shape so it feels no distance between shapes and looks like a torus.
+
+<img width="372" alt="Screenshot_34" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/7bd79de2-12b1-4304-aef6-c7b66a7c0b31">
 
 
+1)There is a capsule that has a FauxGravityAttractor script on it that works in dealing with gravity effect, and on player moving from one part of the torus to another part, the capsule just lerps up to the centre of the next part to create gravity effect on the current part.
 
+
+<img width="402" alt="Screenshot_35" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/450027be-c694-4a39-8fcd-65828eadef61">
+
+
+The gravity body contains a FauxGravityAttractor component on it, which handles the gravity attract mechanism with specific attraction levels.
+
+The update methods in the player script call the method from FauxGravityAttractor script as follows:
+
+<img width="398" alt="Screenshot_36" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/70baff6f-aa85-4e96-b55c-52db6d1e7abd">
+
+The values for gravity variables are set to 15 because it requires more attraction than other planets.
+
+2) Each part of the torus has two colliders, front and back, which have references to the next or previous body colliders so we can activate next body colliders by script and lerp the capsule for gravity effect.
+
+<img width="313" alt="Screenshot_37" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/df536f42-aabd-420b-b119-cfacc7971192">
+
+Each shape has its own script, ShapeShiftTrigger, which handles the trigger events.
+
+<img width="395" alt="Screenshot_38" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/bd312520-e204-49c5-a268-55621d7e25a9">
+
+Event callbacks in ActionOnEnter and ActionOnExit are from GameManager.
+
+3) The main capsule, which has the FauxGravityAttractor, handles overall colliders and FauxGravityAttractor body references for lerp. How the capsule lerps: from initial to final position and then becomes a child of the current part/patch of the torus.
+   
+
+<img width="404" alt="Screenshot_39" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/b0a4802f-e8c2-4506-abbb-d5d748113e39">
+
+Lerp from the current patch of the torus to another by detecting the shape-shifting trigger with their public references.
+
+4)Adding coins and meteors. Coins are easily placeable, but meteors require more gravity effect for proper collision. In this stage, fewer meteors are falling to avoid collisions with meteors. AI cars are also reduced to avoid collision with the player, specifically for this shape.
+
+<img width="378" alt="Screenshot_40" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/0d703d7c-7e53-43ce-924a-ee00b0fed157">
+
+ 5) Controller smoothing, setting the car above the surface always, collider settings, etc.
+   
+ 6) Jump from one planet to another planet mechanism works on previous structure.
+
+
+## Hours distribution phase 4 :
+
+R&D/Brainstorming for how we actually control player movements in Torus: 2 hrs
+Setting the Torus colliders, adding scripts to triggers: 3 hrs
+Player cam control, lerping from patch to another patch, and writing generic code: 6 hrs
+Merging into game flow with stages and jump to the next planet: 3 hrs
+Adding into main menu + polishing the game: 4 hrs
+
+
+## results Phase 4 :
 
