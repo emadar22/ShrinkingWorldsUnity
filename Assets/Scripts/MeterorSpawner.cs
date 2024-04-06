@@ -20,7 +20,7 @@ public class MeterorSpawner : MonoBehaviour
 		GameObject meteror = Instantiate(meteorPrefab, pos, Quaternion.identity);
         meteror.transform.parent = meterorParent;
 
-		yield return new WaitForSeconds(1f);
+		yield return new WaitForSeconds(spawnDelay);
 
 		StartCoroutine(SpawnMeteor());
 	}

@@ -30,13 +30,18 @@ public class FauxGravityBody : MonoBehaviour
     /// </summary>
     void FixedUpdate()
     {
-        /*// place the player on surface
-      // print(placeOnSurface+"   bValue "+this+"   Gameobject To Call: "+this.gameObject);
         if(placeOnSurface) {
             fauxGravityAttractor.PlaceOnSurface(rb);
-        } else {
-             
-        }*/
-        GameManager.instance.GravityAttracxtor().Attract(rb);     
+        } 
+        GravityAttracxtor().Attract(rb);     
+       // FauxGravityAttractManager.ins.Attract(rb);
+    }
+
+    public FauxGravityAttractor gravityAttractor;
+    public FauxGravityAttractor GravityAttracxtor()
+    {
+        gravityAttractor = FauxGravityAttractor.instance;
+        if (!gravityAttractor) gravityAttractor = FindObjectOfType<FauxGravityAttractor>();
+        return gravityAttractor;
     }
 }

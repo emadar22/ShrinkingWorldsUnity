@@ -17,6 +17,7 @@ public class MenuUiManager : Singleton<MenuUiManager>
 
  void Start()
  {
+  
   UpdateCash(addMoneyOnStart);
   Time.timeScale = 1;
  }

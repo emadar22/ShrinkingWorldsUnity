@@ -18,9 +18,10 @@ public class PlayerSelection : MonoBehaviour
 
     private void Start()
     {
+        PlayerPrefs.SetInt("playerpurchased" + 0, 1);
         UpdateUI();
         ActivatePlayerCar(currentSelectedPlayerIndex);
-        PlayerPrefs.SetInt("playerpurchased" + 0, 1);
+        
     }
 
     private void UpdateUI()

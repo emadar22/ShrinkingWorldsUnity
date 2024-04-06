@@ -35,6 +35,11 @@ public class GameManager : Singleton<GameManager>
         public ParticleSystem smokePartilces;
         public GameObject aeroPlane;
         public GameObject cam;
+        public GameObject playerChildCam;
+        
+        // Meteor And Ai Controls Numbers
+        public MeterorSpawner _MeterorSpawner;
+        public List<GameObject> aiCars;
         #endregion
     
     
@@ -73,9 +78,10 @@ public class GameManager : Singleton<GameManager>
             eventOnStart._event.Invoke();
         }
 
-       
+        UpdateSpawnRateAndCarRange();
     }
 
+    
     void ActivatePlanets()
     {
         planets.ForEach(obj=>obj.SetActive(false));
@@ -91,6 +97,13 @@ public class GameManager : Singleton<GameManager>
                 obj.transform.LookAt(player.transform);
             }
         }
+
+        /*
+        if (PlayerPrefsManager.Instance.SelectPlanetNum == 3)
+        {
+            cam.SetActive(false);
+            playerChildCam.SetActive(true);
+        }*/
         
     }
 
@@ -103,7 +116,7 @@ public class GameManager : Singleton<GameManager>
         {
             PlayerPrefsManager.Instance.SfxVolume = 1;
         }
-        ActivateCoins();
+      //  ActivateCoins();
     }
 
     #endregion
@@ -145,7 +158,6 @@ public class GameManager : Singleton<GameManager>
         if (currentPlanet)
         {
             if(spawned) return; 
-            var id = currentPlanet.GetComponent<ShrinkPlanet>().planetID;
                 GameObject obj = Instantiate(planetPrefabs[getCurrentSpawnablePlanet()],
                     new Vector3(currentPlanet.transform.position.x - 15, currentPlanet.transform.position.y,
                         currentPlanet.transform.position.z), currentPlanet.transform.rotation);
@@ -165,6 +177,21 @@ public class GameManager : Singleton<GameManager>
         StartCoroutine(InitialTransfromation(true));
     }
 
+    void UpdateSpawnRateAndCarRange()
+    {
+        if (PlayerPrefsManager.Instance.SelectPlanetNum == 3)
+        {
+            aiCars.ForEach(o=>o.SetActive(false));
+            aiCars[0].SetActive(true);
+            aiCars[0].GetComponent<AiController>().moveSpeed = 1f;
+            _MeterorSpawner.spawnDelay = 5;
+            _MeterorSpawner.distanceFromPlanet = 30;
+            cam.SetActive(false);
+           playerChildCam.SetActive(true);
+           player.GetComponent<PlayerController>().moveSpeed = 1;
+        }
+        
+    }
     void startPlaneLering()
     {
         if (gameObject.TryGetComponent(out testProjectile t))
