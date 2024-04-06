@@ -453,11 +453,11 @@ Lerp from the current patch of the torus to another by detecting the shape-shift
 
 ## Hours distribution phase 4 :
 
-R&D/Brainstorming for how we actually control player movements in Torus: 2 hrs
-Setting the Torus colliders, adding scripts to triggers: 3 hrs
-Player cam control, lerping from patch to another patch, and writing generic code: 6 hrs
-Merging into game flow with stages and jump to the next planet: 3 hrs
-Adding into main menu + polishing the game: 4 hrs
+- R&D/Brainstorming for how we actually control player movements in Torus: 2 hrs
+- Setting the Torus colliders, adding scripts to triggers: 3 hrs
+- Player cam control, lerping from patch to another patch, and writing generic code: 6 hrs
+- Merging into game flow with stages and jump to the next planet: 3 hrs
+- Adding into main menu + polishing the game: 4 hrs
 
 
 ## results Phase 4 :
