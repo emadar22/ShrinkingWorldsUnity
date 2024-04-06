@@ -471,6 +471,17 @@ https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/a13462ae-6eb2-4
 
 
 
+## Different Approach :
+
+- Checking car position
+- Casting two ray  downward -Y axis from two end points of the car
+- The two endpoints which coincide with the ground will be noted
+- Angle between them will be calculated 
+- Then car will be tilted in that angle
+- Pull force will be applied toward mid of line between two ground coinciding point
+- With this approach car will stay steady on ground and bottom force will be applied continuously according to car angle
+- 
+<img width="494" alt="Screenshot_41" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/55f2ee2c-d9de-4e2b-8343-68699bd454de">
 
 
 
