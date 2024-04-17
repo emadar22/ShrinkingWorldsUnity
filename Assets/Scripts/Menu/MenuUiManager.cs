@@ -25,7 +25,11 @@ public class MenuUiManager : Singleton<MenuUiManager>
  public void SelectWorld(int num)
  {
   UpdatePlanetNum(num);
-  SceneManager.LoadScene(1);
+  if(num==3){SceneManager.LoadScene(2);}
+  else
+  {
+   SceneManager.LoadScene(1);
+  }
  }
  void UpdatePlanetNum(int num)
  {

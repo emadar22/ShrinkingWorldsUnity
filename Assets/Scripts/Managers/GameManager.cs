@@ -158,16 +158,25 @@ public class GameManager : Singleton<GameManager>
         if (currentPlanet)
         {
             if(spawned) return; 
-                GameObject obj = Instantiate(planetPrefabs[getCurrentSpawnablePlanet()],
+              if(planetPrefabs.Count>0) {  GameObject obj = Instantiate(planetPrefabs[getCurrentSpawnablePlanet()],
                     new Vector3(currentPlanet.transform.position.x - 15, currentPlanet.transform.position.y,
                         currentPlanet.transform.position.z), currentPlanet.transform.rotation);
                 spawnedPlanet = obj;
                 obj.SetActive(true);
                 spawned = true;
-
+                
+              }
+              else
+              {
+                  PlayerPrefsManager.Instance.SelectPlanetNum += 1;
+              }
         }
     }
 
+    public void UpdateSceneAfterPlanetShifting()
+    {
+        SceneManager.LoadScene(1);
+    }
 
     public void TransformPlanetBodyTo()
     {
@@ -181,14 +190,15 @@ public class GameManager : Singleton<GameManager>
     {
         if (PlayerPrefsManager.Instance.SelectPlanetNum == 3)
         {
-            aiCars.ForEach(o=>o.SetActive(false));
+            //SceneManager.LoadScene(2);
+            /*aiCars.ForEach(o=>o.SetActive(false));
             aiCars[0].SetActive(true);
             aiCars[0].GetComponent<AiController>().moveSpeed = 1f;
             _MeterorSpawner.spawnDelay = 5;
             _MeterorSpawner.distanceFromPlanet = 30;
             cam.SetActive(false);
            playerChildCam.SetActive(true);
-           player.GetComponent<PlayerController>().moveSpeed = 1;
+           player.GetComponent<PlayerController>().moveSpeed = 1;*/
         }
         
     }

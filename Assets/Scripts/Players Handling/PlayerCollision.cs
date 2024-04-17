@@ -19,6 +19,17 @@ public class PlayerCollision : MonoBehaviour
         playerController = this.GetComponent<PlayerController>();
     }
     
+    void OnTriggerEnter(Collider col) //coin Detection
+    {
+        if (col.gameObject.layer==6) // Coins Layer
+        {
+            UiManager.GetInstance().SpawnCoin();
+            SoundManager.GetInstance().PlaySfxSound("coin");
+            UiManager.GetInstance().UpdateBarFilling();
+            Destroy(col.gameObject);
+        }
+    }
+    
     /// <param name="other">The Collision data associated with this collision.</param>
     void OnCollisionEnter(Collision other)
     {
@@ -46,5 +57,6 @@ public class PlayerCollision : MonoBehaviour
             pauseBtn.SetActive(false);
             playerController.isDead = true;
         }
+       
     }
 }
