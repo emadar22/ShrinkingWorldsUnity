@@ -483,6 +483,55 @@ https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/a13462ae-6eb2-4
 - 
 <img width="494" alt="Screenshot_41" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/55f2ee2c-d9de-4e2b-8343-68699bd454de">
 
+##   Phase 6
+The basic gravity and movements controls based on attraction force and raycast detection.
+
+Steps of working mechanism:
+
+1- Player left, right, and forward movement.
+2- Player attraction towards planet.
+
+### Working Mechanism :
+Getting the inputs of left, right, and forward, the player turns to left or right and moves forward as well in the update.
+
+<img width="409" alt="Screenshot_42" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/31927aeb-00df-4272-a577-76946eda1a88">
+
+### Gravity mechanism and player alignment to the surface:
+We detect the planet surface by raycasting and then align the rotational values using Slerp to the surface. Attraction force/addforce works for the gravtoy-like effect, calculating the distance difference between player and planet.
+
+<img width="402" alt="Screenshot_43" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/43a3930f-5319-4413-9622-011bf9e1fe2b">
 
 
+### Meteor working:
+Based on the previous mechanism, meteors are attracted towards the planet after their spawning.
+Meteors detection when collided with player is as follows:
+
+<img width="392" alt="Screenshot_44" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/92ebea81-e65c-4597-861b-f293f403d938">
+
+
+### Coins Addition And Detection With Managing Progress Bar:
+Detection on trigger enter detecting layer of coin and processing the progress bar.
+
+<img width="375" alt="Screenshot_46" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/572f4d9b-fe13-413d-b04c-ced154f99b11">
+
+All process done in the separate scene due to separate player controller for  Torus.
+
+<img width="396" alt="Screenshot_45" src="https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/7722445a-2bd3-4723-9685-6065ad929e21">
+
+### Result :
+
+https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/1f221640-06d6-4305-9c8a-4010fa705701
+
+### Time Sheet:
+
+
+
+R&D/ Brainstorimng For How We Actually Control Player Movements For  Torus                   => 2 hrs
+Player Movements Left Right And Forward                                                      =>1 hrs
+Detection Of Surface And Alignment To The Surface                                            => 4hrs
+Coins And Progress Bar Management                                                             => 2 hrs
+Merging Into Game Flow With Stages And Jump To Next Planet                                    => 2 hrs
+Merging Scenes                                                                                => 1 hrs
+Adding Into Main Menu + Polishing The Game                                                    => 2 hrs
+ 
 
