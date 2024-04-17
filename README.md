@@ -527,11 +527,17 @@ https://github.com/emadar22/ShrinkingWorldsUnity/assets/82322531/1f221640-06d6-4
 
 
 R&D/ Brainstorimng For How We Actually Control Player Movements For  Torus                   => 2 hrs
+
 Player Movements Left Right And Forward                                                      =>1 hrs
+
 Detection Of Surface And Alignment To The Surface                                            => 4hrs
+
 Coins And Progress Bar Management                                                             => 2 hrs
+
 Merging Into Game Flow With Stages And Jump To Next Planet                                    => 2 hrs
+
 Merging Scenes                                                                                => 1 hrs
+
 Adding Into Main Menu + Polishing The Game                                                    => 2 hrs
  
 
