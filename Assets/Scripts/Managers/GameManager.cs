@@ -175,7 +175,17 @@ public class GameManager : Singleton<GameManager>
 
     public void UpdateSceneAfterPlanetShifting()
     {
-        SceneManager.LoadScene(1);
+        if(PlayerPrefsManager.Instance.SelectPlanetNum<planets.Count-1){PlayerPrefsManager.Instance.SelectPlanetNum += 1;}
+
+        if (PlayerPrefsManager.Instance.SelectPlanetNum == planets.Count)
+        {
+            PlayerPrefsManager.Instance.SelectPlanetNum = 0;}
+        if(PlayerPrefsManager.Instance.SelectPlanetNum==3 || PlayerPrefsManager.Instance.SelectPlanetNum==8 || PlayerPrefsManager.Instance.SelectPlanetNum==9 ) 
+        { SceneManager.LoadScene(2);}
+        else
+        {
+            SceneManager.LoadScene(1);
+        }
     }
 
     public void TransformPlanetBodyTo()
@@ -216,7 +226,7 @@ public class GameManager : Singleton<GameManager>
 
     int getCurrentSpawnablePlanet()
     {
-        if (PlayerPrefsManager.Instance.SelectPlanetNum < planets.Count)
+        if (PlayerPrefsManager.Instance.SelectPlanetNum < planets.Count-1)
         {
             PlayerPrefsManager.Instance.SelectPlanetNum += 1;
         }

@@ -8,12 +8,12 @@ public class SurfaceAlighner : MonoBehaviour
     public LayerMask layerMask;
 
     private Rigidbody rb;
-    private Vector3 targetPosition;
+    public Vector3 targetPosition;
 
     public float moveSpeed = 5f; // Speed of left/right movement
     public float rotationSpeed = 100f; // Speed of rotation
     public float forwardSpeed = 10f; // Speed of forward movement
-
+    public bool TargetBelowFound;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -40,18 +40,25 @@ public class SurfaceAlighner : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, -transform.up, out hit, raycastDistance, layerMask))
         {
+            TargetBelowFound = true;
             Vector3 surfaceNormal = hit.normal;
             Quaternion targetRotation = Quaternion.FromToRotation(transform.up, surfaceNormal) * transform.rotation;
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, alignSpeed * Time.deltaTime);
 
             // Set the target position to the hit point
             targetPosition = hit.point;
-            Debug.DrawRay(transform.position, -transform.up * raycastDistance, Color.green);
+            Debug.DrawRay(transform.position, -transform.up * 100, Color.red);
             // Calculate direction to the hit point
             Vector3 direction = targetPosition - transform.position;
 
             // Apply attraction force towards the hit point
             rb.AddForce(direction.normalized * attractionForce);
         }
+        else
+        {
+            TargetBelowFound = false;
+        }
     }
 }
+
+
